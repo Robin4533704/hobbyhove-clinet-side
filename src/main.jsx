@@ -7,9 +7,11 @@ import {
   RouterProvider,
 } from "react-router"
 import MainLayOut from './layout/MainLayOut.jsx'
-import Home from './Components/Home.jsx'
 import Addhobby from './Addhobby.jsx'
 import UpdateHobby from './Components/UpdateHobby.jsx'
+import Home from './layout/Home.jsx'
+import Login from './Components/login/Login.jsx'
+import Sigin from './Components/login/Sigin.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +28,14 @@ const router = createBrowserRouter([
    {
     path: "updatehobby/:id",
     Component: UpdateHobby,
+   },
+   {
+    path: '/login',
+    Component: Login,
+   },
+   {
+    path: "/sigin",
+    Component: Sigin,
    }
    ]
   },
