@@ -7,11 +7,14 @@ import {
   RouterProvider,
 } from "react-router"
 import MainLayOut from './layout/MainLayOut.jsx'
-import Addhobby from './Addhobby.jsx'
 import UpdateHobby from './Components/UpdateHobby.jsx'
 import Home from './layout/Home.jsx'
 import Login from './Components/login/Login.jsx'
 import Sigin from './Components/login/Sigin.jsx'
+import Footer from './Components/Footer.jsx'
+import Banner from './Components/banner/Banner.jsx'
+import AddNewCar from './AddNewCar.jsx'
+import UppdateCar from './Components/UppdateCar.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,12 +25,21 @@ const router = createBrowserRouter([
     Component: Home
    },
    {
-    path: "/addhobby",
-    Component: Addhobby
+     path: "/banner",
+     Component: Banner,
+   },
+  
+   {
+    path: "/footer",
+    Component: Footer,
    },
    {
-    path: "updatehobby/:id",
-    Component: UpdateHobby,
+    path: "/addnewcar",
+    Component: AddNewCar
+   },
+   {
+    path: "/updatecare",
+    Component: UppdateCar
    },
    {
     path: '/login',
@@ -37,8 +49,11 @@ const router = createBrowserRouter([
     path: "/sigin",
     Component: Sigin,
    }
+   
    ]
+   
   },
+  
 ]);
 
 createRoot(document.getElementById('root')).render(

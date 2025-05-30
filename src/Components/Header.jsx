@@ -1,10 +1,14 @@
 import React from 'react';
-import Navber from './Navber.jsx/Navber';
+
+import Banner from './banner/Banner';
+import AllCar from './banner/AllCar';
 
 const Header = () => {
     return (
         <div>
-           <Navber></Navber>
+          
+           <Banner></Banner>
+           <AllCar></AllCar>
         </div>
     );
 };
