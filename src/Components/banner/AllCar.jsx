@@ -2,7 +2,7 @@ import React from 'react';
 
 const AllCar = () => {
     return (
-        <div className='m-6'>
+        <div className='mt-6'>
             <h1 className='text-center text-4xl text-yellow-400 p-6 font-bold'>
                 This <span className='text-blue-400'>is Our</span> New Cars 2025
             </h1>

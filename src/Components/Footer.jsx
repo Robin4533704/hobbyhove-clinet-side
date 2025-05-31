@@ -12,7 +12,7 @@ import logo from '../assets/lambergini.jpg'; // ✅ Image should be imported
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 text-gray-800 py-10 px-6 md:px-20">
+    <footer className="bg-gray-100 text-gray-800 py-10 px-6 md:px-20 md:max-w-7xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Left Side */}
         <div>

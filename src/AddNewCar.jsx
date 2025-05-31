@@ -1,17 +1,46 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 
 const AddNewCar = () => {
+  const handleAddCar = e =>{
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+   const newCar = Object.fromEntries(formData.entries());
+   console.log(newCar);
+
+  //  sent car data to the db
+  fetch('http://localhost:3000/cars',{
+    method: 'POST',
+    headers: {
+         'content-type': 'application/json'
+    },
+    body: JSON.stringify(newCar)
+  })
+  .then(res=> res.json())
+  .then(data=> {
+   if(data.insertedId){
+   Swal.fire({
+  title: "Car added sucessfully!",
+  icon: "success",
+  draggable: true
+});
+// form.reset()
+   }
+  })
+
+  }
     return (
-      <div className=' bg-pink-50'>
+      <div className='p-24 bg-pink-50'>
        
          <div className='p-12 text-center space-x-4'>
                 <h1 className='text-4xl text-blue-400 font-bold'>Add New Cars</h1>
             <p className='text-gray-400'>Mother happily drives her young son to school, symbolizing back to school preparations and family life. A nurturing moment captured during a typical morning routine.</p>
             </div>
-             <form  className='   rounded'>
+             <form onSubmit={handleAddCar} className='rounded'>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-4 '>
                   <fieldset className="fieldset bg-blue-200  border-blue-300 rounded-box  border p-2">
-  <label className="label">Name</label>
+  <label className="label">Car Name</label>
   <input type="text" name='name' className="input w-full" placeholder="My cooffee name" />
   </fieldset>
                   <fieldset className="fieldset bg-blue-200 border-blue-300 rounded-box  border p-2">
@@ -26,7 +55,7 @@ const AddNewCar = () => {
 
   <fieldset className="fieldset bg-blue-200 border-blue-300 rounded-box  border p-2">
   <label className="label">Price</label>
-  <input type="text" name="price" defaultValue="120" className="input w-full" placeholder="Enter coffess price" />
+  <input type="text" name="price" defaultValue="$" className="input w-full" placeholder="$ Enter Cars price" />
 </fieldset>
 
 <fieldset className="fieldset bg-blue-200 border-blue-300 rounded-box border p-2">
