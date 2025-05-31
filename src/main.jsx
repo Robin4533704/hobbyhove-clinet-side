@@ -15,6 +15,7 @@ import Footer from './Components/Footer.jsx'
 import Banner from './Components/banner/Banner.jsx'
 import AddNewCar from './AddNewCar.jsx'
 import UppdateCar from './Components/UppdateCar.jsx'
+import CarsDetails from './Components/banner/CarsDetails.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -39,8 +40,13 @@ const router = createBrowserRouter([
     Component: AddNewCar
    },
    {
-    path: "/updatecare",
+    path: "/updatecare/:id",
+    loader: ({ params }) => fetch(`http://localhost:3000/cars/${params.id}`),
     Component: UppdateCar
+   },
+   {
+      path: "/carsdetails/:id",
+      Component:  CarsDetails,
    },
    {
     path: '/login',

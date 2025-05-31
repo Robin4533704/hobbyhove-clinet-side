@@ -1,13 +1,14 @@
 import React from 'react';
 import { FiMoon, FiSun} from "react-icons/fi";
 import { Link } from 'react-router-dom';
+import { FcBusinessman } from "react-icons/fc";
 import image1 from '../../assets/lambergini.jpg'
 import Dackmode from '../Dackmode';
 const Navber = () => {
     const links = <>
     <Link to="/" className=' px-4 py-2  text-green-600 rounded-2xl bg-white  '>Home</Link>
     <Link to="/addnewcar" className=' px-4 py-2  text-green-600 rounded-2xl bg-white '>My Groups</Link>
-    <Link to="/updatecare" className=' px-4 py-2  text-green-600 rounded-2xl bg-white '>Create Group</Link>
+    <Link to="" className=' px-4 py-2  text-green-600 rounded-2xl bg-white '>Create Group</Link>
     <Link to="/Myprofile" className=' px-4 py-2  text-green-600 rounded-2xl bg-white   '>My Profiles</Link>
     </>
     return (
@@ -31,6 +32,12 @@ const Navber = () => {
     </ul>
   </div>
   <div className="navbar-end gap-2 pr-2">
+    <div className="avatar avatar-online">
+  <div className="w-12 rounded-full">
+   <FcBusinessman />
+  </div>
+</div>
+
     <Link to="/login"><a className="font-bold px-4 py-2 bg-green-400 rounded text-white">Login</a></Link>
    <Link to="/sigin"> <a className="font-bold px-4 py-2 bg-white rounded text-green-400 border border-green-400 hidden lg:block">Sign up</a></Link>
    <Dackmode></Dackmode>
