@@ -1,5 +1,6 @@
 import React from 'react';
 import AllCar from './AllCar';
+import { Link } from 'react-router';
 
 const Banner = () => {
   const bannerStyle = {
@@ -44,7 +45,7 @@ TEMERARIO</h2>
         <p style={{ marginBottom: '1.25rem' }}>
          The vehicle is not yet offered for sale and is therefore not subject to Directive 1999/94/EC. The fuel consumption and emissions data is in the type approval stage
         </p>
-        <button style={{ padding: '0.75rem 1.5rem', fontSize: '1rem', cursor: 'pointer', background: 'blue'  }}>Get Started</button>
+     <Link to="/">   <button style={{ padding: '0.75rem 1.5rem', fontSize: '1rem', cursor: 'pointer', background: 'blue'  }}>Get Started</button></Link>
       </div>
     </div>
    

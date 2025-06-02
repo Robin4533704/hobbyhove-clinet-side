@@ -9,7 +9,7 @@ const AddNewCar = () => {
     const form = e.target;
     const formData = new FormData(form);
     const newCar = Object.fromEntries(formData.entries());
-    console.log(newCar);
+    // console.log(newCar);
 
     // ডাটাবেসে পাঠানো
     fetch('http://localhost:3000/cars', {
@@ -70,7 +70,7 @@ const AddNewCar = () => {
         </div>
         <fieldset className="fieldset bg-blue-200 border-blue-300 rounded-box my-6 border p-2">
           <label className="label">Photo</label>
-          <input type="text" name='photo' className="input w-full" placeholder="photo URL" />
+          <input type="text" name='photoURL' className="input w-full" placeholder="photo URL" />
         </fieldset>
         <button type="submit" className="btn btn-block bg-amber-300">
           Add Car

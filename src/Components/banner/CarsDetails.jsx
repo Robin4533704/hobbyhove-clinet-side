@@ -43,7 +43,7 @@ const CarDetails = () => {
           <p className="mb-2"><strong>Quantity:</strong> {car.quantity}</p>
           <p className="mb-2"><strong>Date:</strong> {car.date}</p>
           <p className="mb-4"><strong>Details:</strong> {car.details}</p>
-          <Link to="/">
+          <Link to="/mygroup">
             <button className="flex items-center bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded shadow transition duration-300">
               <MdOutlineKeyboardBackspace className="mr-2" /> Learn More
             </button>
