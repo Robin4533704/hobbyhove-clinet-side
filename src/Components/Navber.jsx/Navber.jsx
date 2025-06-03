@@ -61,7 +61,7 @@ const Navber = () => {
             <button onClick={handlelogout} className='font-bold px-4 py-2 bg-green-400 rounded text-white'>LogOut</button>
           ) : <>
            <Link to="/auth/login" className="font-bold px-4 py-2 bg-green-400 rounded text-white">Login</Link>
-             <Link to='/auth/sigin' className="btn btn-outline btn-success">Sign Up</Link>
+             <Link to='/auth/sigin' className="btn hidden lg:block btn-outline btn-success">Sign Up</Link>
           </>
         }
         
