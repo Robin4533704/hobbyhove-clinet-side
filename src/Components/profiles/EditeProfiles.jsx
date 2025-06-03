@@ -1,9 +1,10 @@
-import React, { useContext, useState } from 'react';
-
-import { useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import {  toast } from 'react-toastify';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../firebase/AuthContext';
 import icons from '../../assets/download.png'
 import Google from '../login/Google';
+import Loading from '../banner/Loading';
 
 
 const EditProfile = () => {
@@ -11,20 +12,31 @@ const EditProfile = () => {
   const [username, setUsername] = useState(user?.displayName || '');
   const [photoURL, setPhotoURL] = useState(user?.photoURL || '');
   const navigate = useNavigate();
+ const [loading, setLoading]= useState(true)
 
+ useEffect(() => {
+  if (user) {
+    setLoading(false);
+  }
+}, [user]);
   const handleSubmit = (e) => {
     e.preventDefault();
 
     updateUserProfile({ displayName: username, photoURL: icons })
       .then(() => {
-        console.log("✅ Profile update success");
+       
         setUser({ ...user, displayName: username, photoURL });
         navigate('/myprifile');
+        toast("Update Your Profile!");
       })
       .catch((error) => {
-        console.error('Profile update failed:', error);
+        toast.error('Profile update failed:', error);
       });
   };
+  
+    if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
@@ -61,14 +73,14 @@ const EditProfile = () => {
             <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
               Save Changes
             </button>
-            <button
+           <Link to="/myprifile"> <button
               type="button"
               onClick={() => navigate('/profiles')}
               className="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400"
             >
               Cancel
             </button>
-           
+           </Link>
           </div>
           <div className='mt-2'>
              <Google></Google>

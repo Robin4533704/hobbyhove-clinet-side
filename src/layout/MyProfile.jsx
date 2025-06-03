@@ -1,13 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../firebase/AuthContext';
 import icons from '../assets/download.png'
+import Loading from '../Components/banner/Loading';
 
 
 const Profiles = () => {
   const { user, logOut } = useContext( AuthContext);
-
+const [loading, setLoading] = useState(true);
+useEffect(()=>{
+  if(user){
+    setLoading(false)
+  }
+},[user])
   const handleLogout = () => {
     logOut()
       .then(() => {
@@ -18,6 +24,8 @@ const Profiles = () => {
       });
   };
 
+ if (loading) {
+    return <Loading />;}
   return (
     <div className=" max-w-md md:mt-16 md:mb-16 lg:mt-16 mx-auto bg-blue-100 shadow rounded-lg p-6 text-center">
       <h2 className="text-2xl font-bold p-6">My Profile</h2>

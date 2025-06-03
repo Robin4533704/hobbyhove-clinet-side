@@ -2,15 +2,16 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
-import { AuthContext } from '../../firebase/AuthContext';
 import Google from './Google';
+import { AuthContext } from '../../firebase/AuthContext';
 
 const Sigin = () => {
-  const {  createUser, setUser,  updateUserProfile } = useContext(AuthContext);
+  const { createUser, setUser,  updateUserProfile } = useContext(AuthContext);
  const location = useLocation();
   const navigate = useNavigate();
  const [nameError, setNameError] = useState()
 const [photoError, setPhotoError] = useState('');
+
   const handlesigin = (e) => {
    
     e.preventDefault()

@@ -1,10 +1,13 @@
 import React from 'react';
-import { useLoaderData, useNavigate } from 'react-router-dom';;
+import { useLoaderData, useNavigate, useParams } from 'react-router-dom';;
 
 import Swal from 'sweetalert2';
+
 const UppdateCar = () => {
+  const { id } = useParams();
+const carData = useLoaderData();
   const navigate = useNavigate();
-  const {_id,name,price, quantity,date,photo,supplier,details} = useLoaderData();
+  const {name,price, quantity,date,photo,supplier,details} = carData;
 
   const handleUpdateCar = e =>{
     e.preventDefault();
@@ -13,37 +16,50 @@ const UppdateCar = () => {
     const updateNewCar = Object.fromEntries(formData.entries())
     console.log(updateNewCar)
       
-    // send updated cars to the db
-   fetch(`https://hobby-lamberghini-car-server.vercel.app/cars/${_id}`,{
+  fetch(`https://hobby-lamberghini-car-server.vercel.app/cars/${id}`, {
   method: 'PUT',
-  headers:{
-    'content-type': "application/json"
+  headers: {
+    'Content-Type': 'application/json',
   },
-  body: JSON.stringify(updateNewCar)
+  body: JSON.stringify(updateNewCar),
 })
-.then(res => res.json())
-.then(data => {
-  if(data.modifiedCount){
-   Swal.fire({
-  position: "top-end",
-  icon: "success",
-  title: "Your work has been saved",
-  showConfirmButton: false,
-  timer: 1500
-});
- navigate('/');
-  }
-  else {
+  .then((res) => {
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+    return res.json();
+  })
+  .then((data) => {
+    if (data.modifiedCount) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      navigate('/');
+    } else {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'info',
+        title: 'No changes were made',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  })
+  .catch((error) => {
+    console.error('ত্রুটি:', error);
     Swal.fire({
-      position: "top-end",
-      icon: "info",
-      title: "No changes were made",
-      showConfirmButton: false,
-      timer: 1500
+      position: 'top-end',
+      icon: 'error',
+      title: 'An error occurred',
+      text: error.message,
+      showConfirmButton: true,
     });
-    
-  }
-})
+  });
+
   }
     return (
          <div className='p-6 bg-pink-50'>

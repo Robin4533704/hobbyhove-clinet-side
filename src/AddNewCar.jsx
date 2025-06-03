@@ -1,12 +1,23 @@
-import React from 'react';
+import React, {   useContext,  useEffect,  useState } from 'react';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import Loading from './Components/banner/Loading';
+import { AuthContext } from './firebase/AuthContext';
 
 const AddNewCar = () => {
+  const[loading, setLoading] = useState(false);
+ const {user} = useContext(AuthContext)
+ 
+useEffect(() => {
+  if (user) {
+    setLoading(false);
+  }
+}, [user]);
   const navigate = useNavigate(); // হোম পেজে রিডাইরেক্টের জন্য
   const handleAddCar = e => {
     e.preventDefault();
     const form = e.target;
+    
     const formData = new FormData(form);
     const newCar = Object.fromEntries(formData.entries());
     // console.log(newCar);
@@ -27,11 +38,15 @@ const AddNewCar = () => {
           icon: "success",
           draggable: true
         });
-        
+         
         navigate('/');
       }
     });
   }
+
+if (loading) {
+  return <Loading />;
+}
 
   return (
     <div className='p-8 bg-pink-50'>
@@ -70,7 +85,7 @@ const AddNewCar = () => {
         </div>
         <fieldset className="fieldset bg-blue-200 border-blue-300 rounded-box my-6 border p-2">
           <label className="label">Photo</label>
-          <input type="text" name='photoURL' className="input w-full" placeholder="photo URL" />
+          <input type="text" name='photo' className="input w-full" placeholder="photo URL" />
         </fieldset>
         <button type="submit" className="btn btn-block bg-amber-300">
           Add Car
