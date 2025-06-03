@@ -14,7 +14,7 @@ const UppdateCar = () => {
     console.log(updateNewCar)
       
     // send updated cars to the db
-   fetch(`http://localhost:3000/cars/${_id}`,{
+   fetch(`https://hobby-lamberghini-car-server.vercel.app/cars/${_id}`,{
   method: 'PUT',
   headers:{
     'content-type': "application/json"
@@ -55,21 +55,21 @@ const UppdateCar = () => {
             <div className='grid grid-cols-1 md:grid-cols-2 gap-4 '>
                   <fieldset className="fieldset bg-blue-200  border-blue-300 rounded-box  border p-2">
   <label className="label">Name</label>
-  <input type="text" defaultValue={name} name='name' className="input w-full" placeholder="My cooffee name" />
+  <input type="text" defaultValue={name} name='name' className="input w-full" placeholder="My Cars name" />
   </fieldset>
                   <fieldset className="fieldset bg-blue-200 border-blue-300 rounded-box  border p-2">
   <label className="label">Quantity</label>
-  <input type="text" defaultValue={quantity} name='quantity' className="input w-full" placeholder="My chef name" />
+  <input type="text" defaultValue={quantity} name='quantity' className="input w-full" placeholder="My Cars name" />
   </fieldset>
                   <fieldset className="fieldset bg-blue-200 border-blue-300 rounded-box  border p-2">
   <label className="label">Supplier</label>
-  <input type="text"  defaultValue={supplier} name='supplier' className="input w-full" placeholder="enter foffee supplier" />
+  <input type="text"  defaultValue={supplier} name='supplier' className="input w-full" placeholder="enter Cars supplier" />
   </fieldset>
                  
 
   <fieldset className="fieldset bg-blue-200 border-blue-300 rounded-box  border p-2">
   <label className="label">Price</label>
-  <input type="text" defaultValue={price}   name="price" className="input w-full" placeholder="Enter coffess price" />
+  <input type="text" defaultValue={price}   name="price" className="input w-full" placeholder="Enter Cars price" />
 </fieldset>
 
 <fieldset className="fieldset bg-blue-200 border-blue-300 rounded-box border p-2">
@@ -79,7 +79,7 @@ const UppdateCar = () => {
 
  <fieldset className="fieldset bg-blue-200 border-blue-300 rounded-box  border p-2">
   <label className="label">Details</label>
-  <input type="text" defaultValue={details}  name='details' className="input w-full" placeholder="enter coffee details" />
+  <input type="text" defaultValue={details}  name='details' className="input w-full" placeholder="enter Cars details" />
   </fieldset>
                  
             </div>
@@ -88,7 +88,7 @@ const UppdateCar = () => {
   <input type="text"defaultValue={photo}  name='photo' className="input w-full" placeholder="photo URL" />
   </fieldset>
   <button type="submit" className="btn btn-block bg-amber-300">
-  Add Coffee
+  Update Cars
 </button>
 
 

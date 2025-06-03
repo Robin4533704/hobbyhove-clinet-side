@@ -20,7 +20,7 @@ const CarCart = ({car, cars, setCars}) => {
     confirmButtonText: "Yes, delete it!"
   }).then((result) => {
     if (result.isConfirmed) {
-      fetch(`http://localhost:3000/cars/${_id}`, {
+      fetch(`https://hobby-lamberghini-car-server.vercel.app/cars/${_id}`, {
         method: 'DELETE', // ✅ correct spelling
       })
         .then(res => res.json())
@@ -60,13 +60,13 @@ const CarCart = ({car, cars, setCars}) => {
     
     <img
       src={photo}
-      className="w-40 h-40 object-cover rounded-lg shadow-xl"
+      className="w-full  md:w-40 md:h-40 object-cover rounded-lg shadow-xl"
       alt={name}
     />
 
-    <div className="flex flex-col lg:flex-row items-center justify-between gap-8 w-full">
+    <div className="border-y-2 border-dotted p-2 border-indigo-500  flex flex-row lg:flex-row items-center justify-between gap-8 w-full">
       
-      <div className="text-center lg:text-left">
+      <div className=" text-center lg:text-left">
         <h2 className="font-bold text-lg">{name}</h2>
         <p>Price: {price}</p>
         <p>Quantity: {quantity}</p>

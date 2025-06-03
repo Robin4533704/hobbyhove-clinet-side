@@ -7,7 +7,7 @@ const CarDetails = () => {
   const [car, setCar] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/cars/${id}`)
+    fetch(`https://hobby-lamberghini-car-server.vercel.app/cars/${id}`)
       .then(res => res.json())
       .then(data => {
         setCar(data);

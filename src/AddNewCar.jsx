@@ -12,7 +12,7 @@ const AddNewCar = () => {
     // console.log(newCar);
 
     // ডাটাবেসে পাঠানো
-    fetch('http://localhost:3000/cars', {
+    fetch('https://hobby-lamberghini-car-server.vercel.app/cars', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -34,7 +34,7 @@ const AddNewCar = () => {
   }
 
   return (
-    <div className='p-14 bg-pink-50'>
+    <div className='p-8 bg-pink-50'>
       <div className='p-12 text-center space-x-4'>
         <h1 className='text-4xl text-blue-400 font-bold'>Add New Cars</h1>
         <p className='text-gray-400 p-6'>
@@ -45,15 +45,15 @@ const AddNewCar = () => {
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
           <fieldset className="fieldset bg-blue-200 border-blue-300 rounded-box border p-2">
             <label className="label">Car Name</label>
-            <input type="text" name='name' className="input w-full" placeholder="My coffee name" />
+            <input type="text" name='name' className="input w-full" placeholder="My Cars name" />
           </fieldset>
           <fieldset className="fieldset bg-blue-200 border-blue-300 rounded-box border p-2">
             <label className="label">Quantity</label>
-            <input type="text" name='quantity' className="input w-full" placeholder="My chef name" />
+            <input type="text" name='quantity' className="input w-full" placeholder="My Cars Quantity" />
           </fieldset>
           <fieldset className="fieldset bg-blue-200 border-blue-300 rounded-box border p-2">
             <label className="label">Supplier</label>
-            <input type="text" name='supplier' className="input w-full" placeholder="enter coffee supplier" />
+            <input type="text" name='supplier' className="input w-full" placeholder="enter Cars supplier" />
           </fieldset>
           <fieldset className="fieldset bg-blue-200 border-blue-300 rounded-box border p-2">
             <label className="label">Price</label>
@@ -65,7 +65,7 @@ const AddNewCar = () => {
           </fieldset>
           <fieldset className="fieldset bg-blue-200 border-blue-300 rounded-box border p-2">
             <label className="label">Details</label>
-            <input type="text" name='details' className="input w-full" placeholder="enter coffee details" />
+            <input type="text" name='details' className="input w-full" placeholder="enter cars details" />
           </fieldset>
         </div>
         <fieldset className="fieldset bg-blue-200 border-blue-300 rounded-box my-6 border p-2">

@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../firebase/AuthContext';
 import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../../firebase/AuthContext';
+import Google from './Google';
 
 const Sigin = () => {
   const {  createUser, setUser,  updateUserProfile } = useContext(AuthContext);
@@ -94,10 +95,7 @@ const [photoError, setPhotoError] = useState('');
            <button type="submit" className="btn w-full btn-neutral mt-4">Sign Up</button>
           </fieldset>
         </form>
-        <a href="https://www.google.com" className="btn bg-white text-black border-[#e5e5e5]">
-          {/* Google logo SVG */}
-          Login with Google
-        </a>
+      <Google></Google>
         <p className='text-center'>
           Already have an account? <Link to="/auth/login" className="text-blue-500 font-bold underline">Login</Link>
         </p>

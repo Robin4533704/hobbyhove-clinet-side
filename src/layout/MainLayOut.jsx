@@ -9,7 +9,7 @@ import Navber from '../Components/Navber.jsx/Navber';
 const MainLayOut = () => {
     const {state} = useNavigation()
     return (
-        <div className='md:max-w-7xl mx-auto'>
+        <div className='max-w-xl md:max-w-7xl mx-auto'>
             <Navber></Navber>
             {import.meta.env.VITE_name}
       <section> {state == "loading"? <Loading/> : <Outlet></Outlet> } </section>

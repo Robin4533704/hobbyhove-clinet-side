@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../firebase/AuthContext';
 import icons from '../../assets/download.png'
+import Google from '../login/Google';
 
 
 const EditProfile = () => {
@@ -67,6 +68,10 @@ const EditProfile = () => {
             >
               Cancel
             </button>
+           
+          </div>
+          <div className='mt-2'>
+             <Google></Google>
           </div>
         </form>
       </div>

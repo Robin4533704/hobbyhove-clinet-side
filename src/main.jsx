@@ -34,7 +34,7 @@ const router = createBrowserRouter([
    {
     
      index: true,
-     loader: () => fetch('http://localhost:3000/cars'),
+     loader: () => fetch('https://hobby-lamberghini-car-server.vercel.app/cars'),
        hydrateFallbackElement: <Loading></Loading>,
     Component: Home
    },
@@ -53,13 +53,13 @@ const router = createBrowserRouter([
    },
    {
     path: "/updatecare/:id",
-    loader: ({ params }) => fetch(`http://localhost:3000/cars/${params.id}`),
+    loader: ({ params }) => fetch(`https://hobby-lamberghini-car-server.vercel.app/cars/${params.id}`),
     Component: UppdateCar,
       hydrateFallbackElement: <Loading></Loading>
    },
    {
    path: "/mygroup",
-   loader: () => fetch('http://localhost:3000/cars'),
+   loader: () => fetch('https://hobby-lamberghini-car-server.vercel.app/cars'),
    element: <MyGroup></MyGroup>,
      hydrateFallbackElement: <Loading></Loading>
    },
@@ -74,7 +74,7 @@ const router = createBrowserRouter([
 
    {
       path: "/carsdetails/:id",
-      loader: () => fetch('http://localhost:3000/cars'),
+      loader: () => fetch('https://hobby-lamberghini-car-server.vercel.app/cars'),
       element: <PrivetRoute><CarsDetails></CarsDetails></PrivetRoute>,
       hydrateFallbackElement: <Loading></Loading>
 
