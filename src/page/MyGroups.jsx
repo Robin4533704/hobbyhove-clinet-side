@@ -77,7 +77,7 @@ const MyGroups = () => {
     console.log("Sending update:", updateData);
 
     const res = await api.put(`/groups/${editGroup._id}`, updateData);
-
+        console.log("updated:", res.data)
     Swal.fire("Updated!", "Group has been updated.", "success");
 
     // Update state locally

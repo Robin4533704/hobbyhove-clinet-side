@@ -4,21 +4,56 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/f
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-200 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+    <footer className=" dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-4 py-10 md:py-16 grid grid-cols-1 md:grid-cols-3 gap-8">
 
         {/* Company Info */}
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold text-green-600 dark:text-lime-400">HobbyHive</h2>
+          <Link to="/" className="font-bold text-xl flex items-center text-lime-400">
+             <img
+               src="/Name Logo (1).png"
+               alt="logo"
+               className="rounded-full w-16 h-16 mr-2"
+             />
+            <p className="text-3xl md:block  hidden lg:block"> HobbyHove</p>
+           </Link>
           <p className="text-gray-600 dark:text-gray-400">
             Connect with hobby enthusiasts, explore groups, and make new friends!
           </p>
-          <div className="flex space-x-4 mt-2">
-            <a href="#" className="hover:text-green-500 dark:hover:text-lime-400"><FaFacebookF /></a>
-            <a href="#" className="hover:text-blue-400 dark:hover:text-blue-300"><FaTwitter /></a>
-            <a href="#" className="hover:text-pink-500 dark:hover:text-pink-400"><FaInstagram /></a>
-            <a href="#" className="hover:text-blue-700 dark:hover:text-blue-500"><FaLinkedinIn /></a>
-          </div>
+          <div className="flex justify-center gap-6 mt-8">
+      <a
+        href="https://www.facebook.com/yourprofile"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-600 hover:text-blue-800 transition-colors text-xl"
+      >
+        <FaFacebookF />
+      </a>
+      <a
+        href="https://www.instagram.com/yourprofile"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-pink-500 hover:text-pink-700 transition-colors text-xl"
+      >
+        <FaInstagram />
+      </a>
+      <a
+        href="https://twitter.com/yourprofile"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-400 hover:text-blue-600 transition-colors text-xl"
+      >
+        <FaTwitter />
+      </a>
+      <a
+        href="https://www.linkedin.com/in/yourprofile"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-700 hover:text-blue-900 transition-colors text-xl"
+      >
+        <FaLinkedinIn />
+      </a>
+    </div>
         </div>
 
         {/* Navigation Links */}

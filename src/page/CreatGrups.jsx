@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { useAuth } from "../AuthLayout/auth/AuthProvider";
 import useAxios from "../AuthLayout/auth/useAxios";
 import Loading from "../Components/banner/Loading";
+import { useNavigate } from "react-router";
 
 const CreateGroup = () => {
-  const { user } = useAuth(); 
-  const { api } = useAxios(); 
-  const [loading, setLoading] = React.useState(true);
+  const { user } = useAuth();
+  const { api } = useAxios(); // Axios instance with baseURL
+    const navigate = useNavigate()
+  const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
     groupName: "",
     hobbyCategory: "",
@@ -40,8 +42,9 @@ const CreateGroup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await api.post("/groups", formData);
-      if (res.data.insertedId) {
+      const res = await api.post("/groups", formData); // শুধু path দিন, baseURL ইতিমধ্যেই আছে
+
+      if (res.data.insertedId || res.data._id) {
         Swal.fire({
           title: "✅ Success!",
           text: "Group created successfully!",
@@ -70,16 +73,18 @@ const CreateGroup = () => {
       });
       console.error(err);
     }
+    navigate('/AllGroups')
   };
 
-  React.useEffect(() => {
-      setTimeout(() => setLoading(false), 2000);
-    }, []);
-    if(loading) return <p> <Loading/> </p>
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1000);
+  }, []);
+
+  if (loading) return <Loading />;
 
   return (
-    <div className="max-w-3xl mx-auto pt-18  shadow-md rounded">
-      <h2 className="text-2xl font-bold mb-2 mt-8 text-lime-400">Create a New Hobby Group</h2>
+    <div className="max-w-3xl mx-auto pt-18 shadow-md rounded p-6">
+      <h2 className="text-2xl font-bold mb-4 text-lime-400">Create a New Hobby Group</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Group Name */}
         <div>
@@ -122,7 +127,7 @@ const CreateGroup = () => {
             onChange={handleChange}
             required
             className="w-full border px-3 py-2 rounded"
-          ></textarea>
+          />
         </div>
 
         {/* Meeting Location */}
@@ -173,7 +178,7 @@ const CreateGroup = () => {
             name="imageUrl"
             value={formData.imageUrl}
             onChange={handleChange}
-            className="w-full border  px-3 py-2 rounded"
+            className="w-full border px-3 py-2 rounded"
           />
         </div>
 

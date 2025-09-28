@@ -26,12 +26,18 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="navbar max-w-7xl mx-auto shadow-sm text-lime-500 px-4  fixed rounded-xl w-full z-50 bg-gray-900">
+    <div className="navbar max-w-7xl mx-auto pt-4 text-lime-500 px-4  fixed rounded-xl w-full z-50 ">
       <div className="navbar-start">
-        <Link to="/" className="font-bold text-xl text-green-400">
-        HobbyHive
-        </Link>
-      </div>
+  <Link to="/" className="font-bold text-xl flex items-center text-lime-300">
+    <img
+      src="/Name Logo (1).png"
+      alt="logo"
+      className="rounded-full w-16 h-16 mr-2"
+    />
+   <p className="text-3xl  hidden lg:block"> HobbyHove</p>
+  </Link>
+</div>
+
 
       {/* Desktop Menu */}
       <div className="navbar-center hidden lg:flex">
@@ -43,8 +49,8 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   `px-4 py-2 rounded-md ${
                     isActive
-                      ? "bg-lime-600 text-white"
-                      : "border text-lime-500 hover:bg-white hover:text-black"
+                      ? "bg-lime-400 text-white"
+                      : "border text-lime-400 hover:bg-white hover:text-black"
                   }`
                 }
               >

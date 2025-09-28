@@ -15,7 +15,7 @@ const slides = [
 ];
 
 const Banner = () => (
-  <div className="pt-16">
+  <div className="pt-2">
     <Carousel
       showThumbs={false}
       showStatus={false}
@@ -30,7 +30,7 @@ const Banner = () => (
           <img
             src={slide.img}
             alt={slide.title}
-            className="w-full h-[70vh] md:h-[80vh] object-cover"
+            className="w-full h-[100vh] md:h-[90vh] object-cover"
           />
           {/* Overlay, Fade effect সহ */}
           <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-4 md:px-8 lg:px-16">
