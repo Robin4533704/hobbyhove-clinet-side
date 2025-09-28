@@ -1,2 +1,20 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply bg-white text-black;
+}
+
+html.dark {
+  @apply bg-gray-900 text-white;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}

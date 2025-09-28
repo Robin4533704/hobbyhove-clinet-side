@@ -30,7 +30,7 @@ useEffect(()=>{
     <div className=" max-w-md md:mt-16 md:mb-16 lg:mt-16 mx-auto bg-blue-100 shadow rounded-lg p-6 text-center">
       <h2 className="text-2xl text-blue-400 font-bold p-6">My Profile</h2>
 
-      <div className="pl-4 md:pl-10">
+      <div className=" lg:pl-10">
         <div className=" w-[320px] h-[220px] rounded-xl overflow-hidden border-2 border-gray-300">
         <img
   src={`${user ? user.photoURL : icons}`} 

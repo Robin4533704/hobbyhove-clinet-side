@@ -1,80 +1,56 @@
-import React from 'react';
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaInstagram,
-  FaLinkedinIn,
-  FaPhone,
-  FaEnvelope,
-  FaMapMarkerAlt,
-} from 'react-icons/fa';
-import logo from '../assets/lambergini.jpg'; // ✅ Image should be imported
+import React from "react";
+import { Link } from "react-router-dom";
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 text-gray-800 py-10 px-6 md:px-20 md:max-w-7xl mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        {/* Left Side */}
-        <div>
-          <div className=" mb-4">
-            <img
-              src={logo} // ✅ Use the imported image like this
-              alt="logo"
-              className="w-40  h-40 mx-auto rounded-full"
-            />
-            <h2 className="text-4xl font-bold text-orange-400">
-             AUTOMOBI <span className="text-blue-400">LAMBORGHINI</span>
-            </h2>
-          </div>
-          <p className="mb-4">
-            Always ready to be your friend. Come & Contact with us to share your memorable moments, to share with your best companion.
+    <footer className="bg-gray-200 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+      <div className="max-w-6xl mx-auto px-4 py-10 md:py-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        {/* Company Info */}
+        <div className="space-y-4">
+          <h2 className="text-2xl font-bold text-green-600 dark:text-lime-400">HobbyHive</h2>
+          <p className="text-gray-600 dark:text-gray-400">
+            Connect with hobby enthusiasts, explore groups, and make new friends!
           </p>
-          <div className="flex gap-4 text-2xl mb-4">
-           <a href=" https://www.facebook.com"> <FaFacebookF className="text-blue-600 cursor-pointer" /></a>
-           <a href=" https://www.twitter.com"> <FaTwitter className="text-sky-500 cursor-pointer" /></a>
-            <a href=" https://www.instagram.com"><FaInstagram className="text-pink-600 cursor-pointer" /></a>
-           <a href="https://www.linkedin.com"> <FaLinkedinIn className="text-blue-800 cursor-pointer" /></a>
+          <div className="flex space-x-4 mt-2">
+            <a href="#" className="hover:text-green-500 dark:hover:text-lime-400"><FaFacebookF /></a>
+            <a href="#" className="hover:text-blue-400 dark:hover:text-blue-300"><FaTwitter /></a>
+            <a href="#" className="hover:text-pink-500 dark:hover:text-pink-400"><FaInstagram /></a>
+            <a href="#" className="hover:text-blue-700 dark:hover:text-blue-500"><FaLinkedinIn /></a>
           </div>
-          <h3 className="text-xl font-semibold mb-2">Get in Touch</h3>
-          <ul className="space-y-2">
-            <li className="flex items-center gap-2">
-              <FaPhone /> +88 01969453361
+        </div>
+
+        {/* Navigation Links */}
+        <div className="space-y-2">
+          <h3 className="font-semibold text-lg mb-2">Quick Links</h3>
+          <ul className="space-y-1">
+            <li>
+              <Link to="/" className="hover:text-green-500 dark:hover:text-lime-400">Home</Link>
             </li>
-            <li className="flex items-center gap-2">
-              <FaEnvelope /> robinhossen8428@gmail.com
+            <li>
+              <Link to="/AllGroups" className="hover:text-green-500 dark:hover:text-lime-400">All Groups</Link>
             </li>
-            <li className="flex items-center gap-2">
-              <FaMapMarkerAlt /> 370, Laksam, Cumilla, Chittagong
+            <li>
+              <Link to="/creategrupe" className="hover:text-green-500 dark:hover:text-lime-400">Create Group</Link>
+            </li>
+            <li>
+              <Link to="/mygroups" className="hover:text-green-500 dark:hover:text-lime-400">My Groups</Link>
             </li>
           </ul>
         </div>
 
-        {/* Right Side - Contact Form */}
-        <div>
-          <h3 className="text-2xl font-semibold mb-4 text-center md:text-left">
-            Connect with Us
-          </h3>
-          <form className="space-y-4">
-            <input
-              type="text"
-              placeholder="Name"
-              className="w-full px-4 py-2 border rounded focus:outline-none"
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              className="w-full px-4 py-2 border rounded focus:outline-none"
-            />
-            <textarea
-              placeholder="Message"
-              className="w-full px-4 py-2 border rounded focus:outline-none"
-              rows={4}
-            ></textarea>
-            <button className="px-6 py-2 border border-black rounded-full hover:bg-black hover:text-white transition">
-              Send Message
-            </button>
-          </form>
+        {/* Contact Info */}
+        <div className="space-y-2">
+          <h3 className="font-semibold text-lg mb-2">Contact</h3>
+          <p>Email: <a href="mailto:info@hobbyhive.com" className="hover:text-green-500 dark:hover:text-lime-400">info@hobbyhive.com</a></p>
+          <p>Phone: <a href="tel:+880123456789" className="hover:text-green-500 dark:hover:text-lime-400">+880 123 456 789</a></p>
+          <p>Address: 123 Hobby St, Dhaka, Bangladesh</p>
         </div>
+      </div>
+
+      <div className="border-t border-gray-300 dark:border-gray-700 mt-4 pt-4 text-center text-sm text-gray-600 dark:text-gray-400">
+        &copy; {new Date().getFullYear()} HobbyHive. All rights reserved.
       </div>
     </footer>
   );

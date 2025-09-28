@@ -1,20 +1,23 @@
 import React from 'react';
-import { Outlet, useNavigation } from 'react-router';
-import Loading from '../Components/banner/Loading';
+import { Outlet } from 'react-router';
 import Footer from '../Components/Footer';
-
-import Navber from '../Components/Navber.jsx/Navber';
-
-
+import Navber from '../Components/Navber.jsx/Navber'
+import LottieDemo from '../page/LottieDemo';
+import Loading from '../Components/banner/Loading';
 const MainLayOut = () => {
-    const {state} = useNavigation()
+     const [loading, setLoading] = React.useState(true);
+
+       React.useEffect(() => {
+    setTimeout(() => setLoading(false), 2000);
+  }, []);
+  if(loading) return <div> <Loading/> </div>
     return (
-        <div className='max-w-xl md:max-w-7xl mx-auto'>
-            <Navber></Navber>
-            {import.meta.env.VITE_name}
-      <section> {state == "loading"? <Loading/> : <Outlet></Outlet> } </section>
-        <Footer></Footer>
-         </div>
+       <div className='max-w-7xl mx-auto'>
+          <Navber/>
+      <Outlet />
+      <LottieDemo />
+      <Footer />
+       </div>
     );
 };
 

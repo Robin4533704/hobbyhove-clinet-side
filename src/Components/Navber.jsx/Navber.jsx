@@ -1,74 +1,149 @@
-import React, { useContext } from 'react';
-import { FiMoon, FiSun } from "react-icons/fi";
-import { Link } from 'react-router-dom';
-import { FcBusinessman } from "react-icons/fc";
-import image1 from '../../assets/lambergini.jpg';
-import Dackmode from '../Dackmode';
-import { AuthContext } from '../../firebase/AuthContext';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import icons from '../../assets/download.png' 
-const Navber = () => {
-  const { user, logOut } = useContext(AuthContext); // ✅ useContext শুদ্ধভাবে
+import React from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../../AuthLayout/auth/AuthProvider";
+import ThemeToggle from "../../page/ThemeToggle";
 
-  const handlelogout = () => {
-    logOut()
-      .then(() => {
-       
-        toast.success("You logged out successfully!");
-      })
-      .catch((error) => {
-        toast.error("Something went wrong: ", error.message);
-      });
+
+
+const Navbar = () => {
+  const { user,   logOut } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await logOut();
+      navigate("/auth/login");
+    } catch (error) {
+      console.error("Logout Error:", error.message);
+    }
   };
 
-  const links = <>
-    <Link to="/" className='px-4 py-2 text-green-600 rounded-2xl bg-white'>Home</Link>
-    <Link to="/mygroup" className='px-4 py-2 text-green-600 rounded-2xl bg-white'>My Groups</Link>
-    <Link to="/addnewcar" className='px-4 py-2 text-green-600 rounded-2xl bg-white'>Create Group</Link>
-    <Link to="/myprifile" className='px-4 py-2 text-green-600 rounded-2xl bg-white'>My Profiles</Link>
-  </>;
+  const links = [
+    { to: "/", label: "Home" },
+    { to: "/AllGroups", label: "All Groups" },
+    { to: "/creategrupe", label: "Create Group" },
+    { to: "/mygroups", label: "My Groups" },
+  ];
 
   return (
-    <div className="navbar bg-green-700 text-white rounded shadow-sm">
-      <ToastContainer />
+    <div className="navbar max-w-7xl mx-auto shadow-sm text-lime-500 px-4  fixed rounded-xl w-full z-50 bg-gray-900">
       <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
-            </svg>
-          </div>
-          <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-            {links}
-          </ul>
-        </div>
-        <a className="flex items-center justify-center gap-2">
-          <img className='rounded-full w-10 h-10' src={image1} alt="" />
-          <span className='font-bold text-3xl text-blue-500 hidden lg:block'>Lambor</span>
-          <span className='font-bold text-3xl text-yellow-400 hidden lg:block'>Gihini</span>
-        </a>
+        <Link to="/" className="font-bold text-xl text-green-400">
+        HobbyHive
+        </Link>
       </div>
+
+      {/* Desktop Menu */}
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal gap-2">{links}</ul>
+        <ul className="menu menu-horizontal px-1 font-bold gap-3">
+          {links.map((link, i) => (
+            <li key={i}>
+              <NavLink
+                to={link.to}
+                className={({ isActive }) =>
+                  `px-4 py-2 rounded-md ${
+                    isActive
+                      ? "bg-lime-600 text-white"
+                      : "border text-lime-500 hover:bg-white hover:text-black"
+                  }`
+                }
+              >
+                {link.label}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
       </div>
-      <div className="navbar-end gap-2 pr-2">
-        <div className='text-green-500 font-bold hidden lg:block'>{user && user.email}</div>
-        
-        <img className='w-12 h-12 rounded-full ' src={`${user ? user.photoURL : icons}`} alt="" />
-        {
-          user ? (
-            <button onClick={handlelogout} className='font-bold px-4 py-2 bg-green-400 rounded text-white'>LogOut</button>
-          ) : <>
-           <Link to="/auth/login" className="font-bold px-4 py-2 bg-green-400 rounded text-white">Login</Link>
-             <Link to='/auth/sigin' className="btn hidden lg:block btn-outline btn-success">Sign Up</Link>
+
+      {/* Right side */}
+    
+      <div className="navbar-end flex items-center gap-3 relative">
+        <div className="navbar-end flex items-center gap-3 relative">
+  <ThemeToggle/>
+
+</div>
+
+       
+        {user ? (
+          <>
+            <Link to="/updateprofile">
+              <img
+                src={user.photoURL || "https://via.placeholder.com/40"}
+                alt="Profile"
+                className="h-12 w-12 rounded-full object-cover cursor-pointer"
+              />
+            </Link>
+            <button
+              onClick={handleLogout}
+              className="btn btn-sm lg:block hidden bg-red-500 hover:bg-red-600 text-white"
+            >
+              Logout
+            </button>
           </>
-        }
-        
-        <Dackmode />
+        ) : (
+          <Link
+            to="/auth/login"
+            className="btn btn-sm px-6 font-semibold py-2 bg-lime-500 hover:bg-lime-600 text-white hidden lg:block"
+          >
+            Sign In
+          </Link>
+        )}
+      </div>
+
+      {/* Mobile Menu */}
+      <div className="dropdown dropdown-end block lg:hidden ml-auto">
+        <div tabIndex={0} className="btn btn-ghost">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </div>
+        <ul
+          tabIndex={0}
+          className="menu menu-sm dropdown-content mt-3 p-2 shadow text-white rounded-box w-52"
+        >
+          {links.map((link, i) => (
+            <li key={i}>
+              <NavLink
+                to={link.to}
+                className={({ isActive }) =>
+                  `px-4 py-2 rounded-md ${
+                    isActive
+                      ? "bg-lime-600 text-white"
+                      : "border text-lime-500 hover:text-black hover:bg-white"
+                  }`
+                }
+              >
+                {link.label}
+              </NavLink>
+            </li>
+          ))}
+          <div className="flex items-center gap-3 mt-2">
+            {user ? (
+              <button
+                onClick={handleLogout}
+                className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg shadow-md transition duration-300"
+              >
+                Logout
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                className="px-4 py-2 bg-lime-500 hover:bg-lime-600 text-white font-semibold rounded-lg shadow-md transition duration-300"
+              >
+                Sign In
+              </Link>
+            )}
+          </div>
+        </ul>
       </div>
     </div>
   );
 };
 
-export default Navber;
+export default Navbar;
