@@ -83,8 +83,8 @@ const CreateGroup = () => {
   if (loading) return <Loading />;
 
   return (
-    <div className="max-w-3xl mx-auto pt-18 shadow-md rounded p-6">
-      <h2 className="text-2xl font-bold mb-4 text-lime-400">Create a New Hobby Group</h2>
+    <div className="max-w-3xl mx-auto pt-24 shadow-md rounded p-6">
+      <h2 className="text-2xl text-center font-bold mb-4 text-lime-400">Create a New Hobby Group</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Group Name */}
         <div>

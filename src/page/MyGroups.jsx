@@ -96,13 +96,13 @@ const MyGroups = () => {
   return (
     <div className="max-w-6xl mx-auto pt-16">
       <ToastContainer />
-      <h2 className="text-2xl mt-8 text-lime-400 font-bold mb-6">My Groups</h2>
+      <h2 className="text-2xl mt-8 text-lime-400 font-bold mb-6 text-center">My Groups</h2>
 
       {myGroups.length === 0 ? (
         <p>No groups created yet.</p>
       ) : (
         <div className="overflow-x-auto">
-          <table className="min-w-full bg-white shadow-md rounded">
+          <table className="min-w-full  shadow-md rounded">
             <thead>
               <tr className="bg-gray-100">
                 <th className="py-2 px-4 border">Group Name</th>

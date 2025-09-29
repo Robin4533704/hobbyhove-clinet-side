@@ -43,7 +43,7 @@ const AllGroups = () => {
 
   return (
     <div className="max-w-6xl mx-auto pt-18">
-      <h1 className="text-2xl font-bold mt-6 mb-4 text-lime-400">
+      <h1 className="text-2xl font-bold text-center mt-6 mb-4 text-lime-400">
         All Hobby Groups
       </h1>
 
@@ -54,7 +54,7 @@ const AllGroups = () => {
           {groups.map((group) => (
             <div
               key={group._id}
-              className="bg-lime-300 shadow-md rounded overflow-hidden relative"
+              className=" shadow-md rounded overflow-hidden relative"
             >
               <img
                 src={group.imageUrl || "https://via.placeholder.com/300x150"}

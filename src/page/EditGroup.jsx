@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Loading from "../Components/banner/Loading";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,7 +7,7 @@ import useAxios from "../AuthLayout/auth/useAxios"; // ✅ direct import
 
 const EditGroup = () => {
   const { id } = useParams(); 
-  const navigate = useNavigate();
+ 
   const { api } = useAxios();
   const [groupData, setGroupData] = useState({
     groupName: "",
@@ -58,7 +58,7 @@ const EditGroup = () => {
       const res = await api.put(`/groups/${id}`, updatePayload);
       console.log("Updated:", res.data);
       toast.success("Group updated successfully!");
-      navigate("/all-groups");
+     
     } catch (err) {
       console.error("Failed to update group:", err);
       toast.error("Failed to update group!");

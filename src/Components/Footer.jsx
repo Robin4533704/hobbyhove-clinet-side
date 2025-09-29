@@ -58,7 +58,7 @@ const Footer = () => {
 
         {/* Navigation Links */}
         <div className="space-y-2">
-          <h3 className="font-semibold text-lg mb-2">Quick Links</h3>
+          <h3 className="font-semibold text-lime-300 text-lg mb-2">Quick Links</h3>
           <ul className="space-y-1">
             <li>
               <Link to="/" className="hover:text-green-500 dark:hover:text-lime-400">Home</Link>
@@ -77,7 +77,7 @@ const Footer = () => {
 
         {/* Contact Info */}
         <div className="space-y-2">
-          <h3 className="font-semibold text-lg mb-2">Contact</h3>
+          <h3 className="font-semibold text-lg mb-2 text-lime-300">Contact</h3>
           <p>Email: <a href="mailto:info@hobbyhive.com" className="hover:text-green-500 dark:hover:text-lime-400">info@hobbyhive.com</a></p>
           <p>Phone: <a href="tel:+880123456789" className="hover:text-green-500 dark:hover:text-lime-400">+880 123 456 789</a></p>
           <p>Address: 123 Hobby St, Dhaka, Bangladesh</p>

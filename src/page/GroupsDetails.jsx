@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAxios from "../AuthLayout/auth/useAxios";
 import { toast } from "react-toastify";
+import Loading from "../Components/banner/Loading";
 
 const GroupDetails = () => {
   const { id } = useParams(); // URL থেকে group id
   const { api } = useAxios();
   const [group, setGroup] = useState(null);
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchGroup = async () => {
@@ -22,15 +24,15 @@ const GroupDetails = () => {
   }, [id, api]);
 
   const handleJoin = () => {
-    // এখানে আপনি join group logic দিতে পারেন
+    navigate("/creategrupe")
     toast.success(`You joined "${group.groupName}" successfully!`);
   };
 
-  if (!group) return <p>Loading group details...</p>;
+  if (!group) return <p> <Loading/></p>;
 
   return (
-    <div className="max-w-3xl mx-auto pt-16 bg-white shadow-md rounded p-6">
-      <h2 className="text-2xl font-bold mb-4 mt-10 text-lime-400">{group.groupName}</h2>
+    <div className="max-w-3xl mx-auto pt-18  shadow-md rounded p-6">
+      <h2 className="text-2xl text-center font-bold mb-4 mt-10 text-lime-400">{group.groupName}</h2>
       <img
         src={group.imageUrl || "https://via.placeholder.com/600x300"}
         alt={group.groupName}

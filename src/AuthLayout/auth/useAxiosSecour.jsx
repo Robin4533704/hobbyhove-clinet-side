@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-  baseURL: "REACT_APP_API_URL",
+  baseURL: "VITE_API_URL",
 });
 
 
