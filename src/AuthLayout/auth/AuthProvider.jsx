@@ -1,50 +1,107 @@
-import React, { createContext, useEffect, useState, useContext } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { 
   createUserWithEmailAndPassword,
-  onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
-  updateProfile
+  updateProfile,
+  sendPasswordResetEmail,
+  sendEmailVerification,
+  signInWithPopup
 } from "firebase/auth";
-import { auth } from "../../firebase/Firebase.config";
+import { auth, googleProvider, githubProvider } from "../../firebase/Firebase.config";
+import { axiosInstance } from "./useAxiosSecour";
 
-// Context তৈরি
+
 const AuthContext = createContext();
 
-// Provider Component
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Sign Up
+  // Sign up
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  // Sign In
+  // Sign in
   const signInUser = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  // Log Out
+  // Log out
   const logOut = () => {
     setLoading(true);
     return signOut(auth);
   };
 
-  // Update Profile
+  // Update profile
   const updateUserProfiles = (updateData) => {
-    if (auth.currentUser) {
-      return updateProfile(auth.currentUser, updateData);
-    }
-    return Promise.reject(new Error("No user logged in"));
+    if (!auth.currentUser) return Promise.reject("No user logged in");
+    return updateProfile(auth.currentUser, updateData);
   };
 
-  // Track User State
+  // Password reset
+  const passwordReset = (email) => sendPasswordResetEmail(auth, email);
+
+  // Email verification
+  const VerificationEmail = () => {
+    if (!auth.currentUser) return;
+    return sendEmailVerification(auth.currentUser)
+      .then(() => console.log("Verification email sent!"))
+      .catch(err => console.error(err));
+  };
+
+  // Google login
+  const signInGoogleUser = async () => {
+    setLoading(true);
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      await saveUserToBackend(result.user);
+      return result.user;
+    } catch (error) {
+      console.error("Google Login Failed:", error);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // GitHub login
+  const signInGithubUser = async () => {
+    setLoading(true);
+    try {
+      const result = await signInWithPopup(auth, githubProvider);
+      await saveUserToBackend(result.user);
+      return result.user;
+    } catch (error) {
+      console.error("GitHub Login Failed:", error);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Save user to backend
+  const saveUserToBackend = async (user) => {
+    try {
+      await axiosInstance.post("/users", {
+        email: user.email,
+        displayName: user.displayName || "User",
+        photoURL: user.photoURL,
+        role: "user",
+        created_at: new Date().toISOString(),
+        last_log_in: new Date().toISOString(),
+      });
+    } catch (err) {
+      console.error("Save user error:", err);
+    }
+  };
+
+  // Track user state
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = auth.onAuthStateChanged((currentUser) => {
       setUser(currentUser);
       setLoading(false);
     });
@@ -57,7 +114,11 @@ export const AuthProvider = ({ children }) => {
     createUser,
     signInUser,
     logOut,
-    updateUserProfiles
+    updateUserProfiles,
+    passwordReset,
+    VerificationEmail,
+    signInGoogleUser,
+    signInGithubUser,
   };
 
   return (
@@ -67,5 +128,4 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// Custom Hook
 export const useAuth = () => useContext(AuthContext);

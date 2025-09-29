@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-  baseURL: "VITE_API_URL",
+  baseURL: import.meta.env.VITE_API_URL, // আপনার backend URL
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
-
 
 const useAxiosSecour = (config) => {
   const [data, setData] = useState(null);

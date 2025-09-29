@@ -6,7 +6,7 @@ import Loading from "../Components/banner/Loading";
 
 const AllGroups = () => {
   const { api } = useAxios();
-  const [groups, setGroups] = useState([]); // ❌ initial empty array
+  const [groups, setGroups] = useState([]); 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -39,7 +39,7 @@ const AllGroups = () => {
   };
 
   if (loading) return <Loading />;
-  if (error) return <p className="text-red-500">{error}</p>;
+  if (error) return <p className="text-red-500 text-center pt-25">{error}</p>;
 
   return (
     <div className="max-w-6xl mx-auto pt-18">

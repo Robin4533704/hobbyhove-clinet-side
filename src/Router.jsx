@@ -12,6 +12,7 @@ import PrivetRoute from "./Components/PrivetRoute";
 import ErrorPage from "./Components/profiles/Errorpage";
 import UpdateProfile from "./Components/Navber.jsx/updateprofile";
 import EditGroup from "./page/EditGroup";
+import ForgetPassword from "./page/ForgetPassword";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +68,7 @@ const router = createBrowserRouter([
     children: [
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
+      {path: "forgetpassword", element: <ForgetPassword/>}
     ],
   },
 ]);
