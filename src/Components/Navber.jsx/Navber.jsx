@@ -28,14 +28,15 @@ const Navbar = () => {
   return (
     <div className="navbar max-w-7xl mx-auto pt-4 text-lime-500 px-4  fixed rounded-xl w-full z-50 ">
       <div className="navbar-start">
-  <Link to="/" className="font-bold text-xl flex items-center text-lime-300">
-    <img
-      src="/Name Logo (1).png"
-      alt="logo"
-      className="rounded-full w-16 h-16 mr-2"
-    />
-   <p className="text-3xl  hidden lg:block"> HobbyHove</p>
-  </Link>
+ <Link to="/" className="relative font-bold  flex items-center gap-2 text-lime-300">
+  <img
+    src="/Black_White_Bold_Simple_Initials_Name_Logo-removebg-preview (1).png"
+    alt="logo"
+    className="rounded-full  w-15 h-15"
+  />
+  <p className="absulate -ml-5 text-3xl hidden lg:block">HobbyHove</p>
+</Link>
+
 </div>
 
 
@@ -76,7 +77,7 @@ const Navbar = () => {
               <img
                 src={user.photoURL || "https://via.placeholder.com/40"}
                 alt="Profile"
-                className="h-12 w-12 rounded-full object-cover cursor-pointer"
+                className="h-12 lg:block hidden  w-12 rounded-full object-cover cursor-pointer"
               />
             </Link>
             <button

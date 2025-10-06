@@ -42,8 +42,16 @@ export const AuthProvider = ({ children }) => {
     return updateProfile(auth.currentUser, updateData);
   };
 
-  // Password reset
-  const passwordReset = (email) => sendPasswordResetEmail(auth, email);
+const passwordReset = async (email) => {
+  try {
+    console.log("Attempting reset for:", email);
+    await sendPasswordResetEmail(auth, email);
+    console.log("Password reset email sent!");
+  } catch (error) {
+    console.error("Error sending password reset email:", error.code, error.message);
+  }
+};
+
 
   // Email verification
   const VerificationEmail = () => {

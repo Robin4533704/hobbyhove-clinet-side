@@ -34,7 +34,7 @@ const SocialLogin = () => {
   {/* Google Button */}
   <button
     onClick={handleGoogleSignIn}
-    className="w-full flex items-center gap-2 justify-center px-4 py-2 rounded-md border border-[#e5e5e5] 
+    className="w-full flex items-center gap-2 justify-center py-2 rounded-md border border-[#e5e5e5] 
       bg-gradient-to-r from-sky-300 via-sky-400 to-sky-500 
       hover:from-sky-400 hover:to-sky-600 transition duration-200 mb-2 text-black text-sm"
   >
@@ -47,7 +47,7 @@ const SocialLogin = () => {
         <path fill="#ea4335" d="M153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55" />
       </g>
     </svg>
-    <span className="hidden sm:inline">Sign in with Google</span>
+    <span className="sm:inline">Sign in with Google</span>
   </button>
 
   {/* GitHub Button */}
@@ -70,7 +70,7 @@ const SocialLogin = () => {
       0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19
       0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
     </svg>
-    <span className="hidden sm:inline ">Sign in with GitHub</span>
+    <span className=" sm:inline ">Sign in with GitHub</span>
   </button>
 </div>
   );

@@ -9,13 +9,13 @@ const Footer = () => {
 
         {/* Company Info */}
         <div className="space-y-4">
-          <Link to="/" className="font-bold text-xl flex items-center text-lime-400">
+          <Link to="/" className="relative font-bold  flex items-center text-lime-400">
              <img
-               src="/Name Logo (1).png"
+               src="/Black_White_Bold_Simple_Initials_Name_Logo-removebg-preview (1).png"
                alt="logo"
-               className="rounded-full w-16 h-16 mr-2"
+               className="rounded-full w-16 h-16"
              />
-            <p className="text-3xl md:block  hidden lg:block"> HobbyHove</p>
+            <p className="absulate -ml-3 text-3xl md:block  hidden lg:block">HobbyHove</p>
            </Link>
           <p className="text-gray-600 dark:text-gray-400">
             Connect with hobby enthusiasts, explore groups, and make new friends!
@@ -79,8 +79,8 @@ const Footer = () => {
         <div className="space-y-2">
           <h3 className="font-semibold text-lg mb-2 text-lime-300">Contact</h3>
           <p>Email: <a href="mailto:info@hobbyhive.com" className="hover:text-green-500 dark:hover:text-lime-400">info@hobbyhive.com</a></p>
-          <p>Phone: <a href="tel:+880123456789" className="hover:text-green-500 dark:hover:text-lime-400">+880 123 456 789</a></p>
-          <p>Address: 123 Hobby St, Dhaka, Bangladesh</p>
+          <p>Phone: <a href="tel:+8801969453361" className="hover:text-green-500 dark:hover:text-lime-400">+880 123 456 789</a></p>
+          <p>Address: Comilla, Bangladesh</p>
         </div>
       </div>
 

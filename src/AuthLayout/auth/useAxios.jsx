@@ -1,9 +1,23 @@
 // useAxios.js
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { auth } from "../../firebase/Firebase.config";
+
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL
+  baseURL: import.meta.env.VITE_API_URL,
+});
+
+// Axios interceptor দিয়ে token attach করা হচ্ছে
+api.interceptors.request.use(async (config) => {
+  const user = auth.currentUser;
+  if (user) {
+    const token = await user.getIdToken();
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+}, (error) => {
+  return Promise.reject(error);
 });
 
 const useAxios = (config) => {

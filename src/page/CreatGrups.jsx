@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { useAuth } from "../AuthLayout/auth/AuthProvider";
-import useAxios from "../AuthLayout/auth/useAxios";
 import Loading from "../Components/banner/Loading";
 import { useNavigate } from "react-router";
+import useAxios from "../AuthLayout/auth/useAxios";
 
 const CreateGroup = () => {
   const { user } = useAuth();
@@ -51,6 +51,7 @@ const CreateGroup = () => {
           icon: "success",
           confirmButtonColor: "#3085d6",
         });
+        
         setFormData({
           groupName: "",
           hobbyCategory: "",
@@ -63,6 +64,7 @@ const CreateGroup = () => {
           userEmail: user?.email || "",
           status: "ongoing",
         });
+         navigate('/AllGroups')
       }
     } catch (err) {
       Swal.fire({
@@ -73,7 +75,7 @@ const CreateGroup = () => {
       });
       console.error(err);
     }
-    navigate('/AllGroups')
+   
   };
 
   useEffect(() => {
