@@ -15,7 +15,7 @@ const slides = [
 ];
 
 const Banner = () => (
-  <div className="pt-2">
+  <div className="pt-6">
     <Carousel
       showThumbs={false}
       showStatus={false}
