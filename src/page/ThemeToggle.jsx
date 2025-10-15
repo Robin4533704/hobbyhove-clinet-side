@@ -38,8 +38,8 @@ const ThemeToggle = () => {
 
       {/* ✅ ছোট স্ক্রিনে: Icon → Text → Toggle */}
       <div className="flex items-center gap-2 lg:hidden 
-             bg-gray-700 dark:bg-white 
-             p-2 rounded-lg shadow-md transition-colors duration-300">
+             bg-gray-700 dark:bg-white duration-300
+             p-2 rounded-lg shadow-md transition-colors ">
         {/* Icon */}
         <div className="text-yellow-400 dark:text-blue-400">
           {darkMode ? <FaMoon size={20} /> : <FaSun size={20} />}

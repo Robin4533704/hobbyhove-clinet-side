@@ -85,7 +85,17 @@ const CreateGroup = () => {
   if (loading) return <Loading />;
 
   return (
-    <div className="max-w-3xl mx-auto pt-24 shadow-md rounded p-6">
+ <div>
+  <div className="pt-24">
+        <button
+          onClick={() => navigate(-1)} // আগের পেজে যাবে
+          className="px-4 py-2 bg-blue-400 text-white rounded hover:bg-blue-600"
+        >
+          Back
+        </button>
+      </div>
+     <div className="max-w-3xl mx-auto  shadow-md rounded p-6">
+       
       <h2 className="text-2xl text-center font-bold mb-4 text-lime-400">Create a New Hobby Group</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Group Name */}
@@ -215,6 +225,7 @@ const CreateGroup = () => {
         </button>
       </form>
     </div>
+ </div>
   );
 };
 

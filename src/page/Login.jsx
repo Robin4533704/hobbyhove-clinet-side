@@ -54,29 +54,44 @@ const handleResetPassword =  async () => {
 };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 shadow-lg rounded-md bg-white">
-      <h1 className="text-2xl font-bold mb-4 text-center">Login</h1>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <input {...register("email", { required: "Email required" })} type="email" placeholder="Email" className="input input-bordered w-full"/>
-        {errors.email && <p className="text-red-500">{errors.email.message}</p>}
+ <div className="max-w-md mx-auto mt-10 p-6 shadow-lg rounded-md bg-gray-200 dark:bg-white transition-colors duration-300">
+  <h1 className="text-2xl font-bold mb-4 text-black dark:text-white text-center">Login</h1>
+  <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+    <input
+      {...register("email", { required: "Email required" })}
+      type="email"
+      placeholder="Email"
+      className="input input-bordered w-full placeholder-gray-500 dark:placeholder-gray-400 text-black dark:text-white"
+    />
+    {errors.email && <p className="text-red-500">{errors.email.message}</p>}
 
-        <div className="relative">
-          <input {...register("password", { required: "Password required" })} type={showPassword ? "text" : "password"} placeholder="Password" className="input input-bordered w-full pr-10"/>
-          <button type="button" className="absolute right-3 top-1/2 -translate-y-1/2" onClick={() => setShowPassword(!showPassword)}>
-            {showPassword ? <FaEyeSlash /> : <FaEye />}
-          </button>
-        </div>
-
-        <Link onClick={handleResetPassword} className="link text-sm">Forgot Password?</Link>
-        <button type="submit" className="btn w-full bg-green-500 text-white">Login</button>
-      </form>
-
-      <p className="mt-2 text-center">
-        New user? <Link to="/auth/register" className="text-blue-500">Register</Link>
-      </p>
-
-      <SocialLogin />
+    <div className="relative">
+      <input
+        {...register("password", { required: "Password required" })}
+        type={showPassword ? "text" : "password"}
+        placeholder="Password"
+        className="input input-bordered w-full pr-10 placeholder-gray-500 dark:placeholder-gray-400 text-black dark:text-white"
+      />
+      <button
+        type="button"
+        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 dark:text-gray-300"
+        onClick={() => setShowPassword(!showPassword)}
+      >
+        {showPassword ? <FaEyeSlash /> : <FaEye />}
+      </button>
     </div>
+
+    <Link onClick={handleResetPassword} className="link text-sm text-blue-500 dark:text-blue-400">Forgot Password?</Link>
+    <button type="submit" className="btn w-full bg-green-500 text-white">Login</button>
+  </form>
+
+  <p className="mt-2 text-center text-black dark:text-white">
+    New user? <Link to="/auth/register" className="text-blue-500 dark:text-blue-400">Register</Link>
+  </p>
+
+  <SocialLogin />
+</div>
+
   );
 };
 

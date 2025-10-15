@@ -5,7 +5,7 @@ import SocialCard from "./SocialCard";
 
 const Home = () => {
   return (
-   <div className="light:bg-white dark:text-gray-100 dark:bg-gray-900 min-h-screen transition-colors">
+   <div className="light:bg-white dark:text-gray-200 dark:bg-gray-900 min-h-screen transition-colors">
   <Banner />
   <SocialCard/>
   <HomeContent/>
