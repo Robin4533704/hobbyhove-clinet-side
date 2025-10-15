@@ -11,7 +11,7 @@ const HomeContent = () => {
       {/* Section: Why Join HobbyHive */}
       <section className=" dark:text-white dark:bg-gray-800 py-16 transition-colors duration-300">
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl text-gray-400 md:text-4xl font-bold mb-4">
             Why Join HobbyHive?
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-800 mb-6">

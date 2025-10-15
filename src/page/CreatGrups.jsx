@@ -86,7 +86,7 @@ const CreateGroup = () => {
 
   return (
  <div>
-  <div className="pt-24">
+  <div className="pt-24 pl-6  lg:pl-8">
         <button
           onClick={() => navigate(-1)} // আগের পেজে যাবে
           className="px-4 py-2 bg-blue-400 text-white rounded hover:bg-blue-600"
